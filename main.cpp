@@ -1,12 +1,12 @@
 #include <iostream>
 
-#include <GL/gl.h>
-
 #include <SFML/Window.hpp>
+#include <SFML/OpenGL.hpp>
 
 int main(int, char **)
 {
     sf::Window window(sf::VideoMode({800, 600}), "OpenGL");
+    glEnable(GL_TEXTURE_2D);
 
     while (window.isOpen())
     {
@@ -18,6 +18,4 @@ int main(int, char **)
             }
         }
     }
-
-    glBlendEquation(1);
 }
