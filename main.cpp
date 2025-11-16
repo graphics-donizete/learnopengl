@@ -41,6 +41,11 @@ int main(int, char **)
             {
                 window.close();
             }
+            else if (const auto &resize = event->getIf<sf::Event::Resized>())
+            {
+                const auto [width, height] = resize->size;
+                glViewport(0, 0, width, height);
+            }
         }
 
         glClearColor(
