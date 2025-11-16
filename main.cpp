@@ -1,6 +1,8 @@
 #include <iostream>
-
 #include <cmath>
+
+#define GLAD_GL_IMPLEMENTATION
+#include <glad/gl.h>
 
 #include <SFML/System.hpp>
 #include <SFML/Window.hpp>
@@ -23,7 +25,13 @@ int main(int, char **)
     window.setFramerateLimit(30);
     window.setVerticalSyncEnabled(true);
 
-    (void)window.setActive(true);
+    if (!window.setActive(true))
+    {
+        std::cerr << "Failed to set window to active" << std::endl;
+        return EXIT_FAILURE;
+    }
+
+    gladLoadGL(sf::Context::getFunction);
 
     while (window.isOpen())
     {
