@@ -1,10 +1,15 @@
 #include <iostream>
 
+#include <cmath>
+
+#include <SFML/System.hpp>
 #include <SFML/Window.hpp>
 #include <SFML/OpenGL.hpp>
 
 int main(int, char **)
 {
+    const sf::Clock clock;
+
     sf::ContextSettings settings{
         .depthBits = 24,
         .stencilBits = 8,
@@ -15,6 +20,8 @@ int main(int, char **)
     };
 
     sf::Window window(sf::VideoMode({800, 600}), "OpenGL", sf::Style::Default, sf::State::Windowed, settings);
+    window.setFramerateLimit(30);
+    window.setVerticalSyncEnabled(true);
 
     (void)window.setActive(true);
 
@@ -28,7 +35,11 @@ int main(int, char **)
             }
         }
 
-        glClearColor(1, 0, 0, 1);
+        glClearColor(
+            sin(clock.getElapsedTime().asSeconds()),
+            cos(clock.getElapsedTime().asSeconds()),
+            tan(clock.getElapsedTime().asSeconds()),
+            1);
         glClear(GL_COLOR_BUFFER_BIT);
 
         window.display();

@@ -5,4 +5,4 @@ subdirs(external/SFML)
 find_package(OpenGL REQUIRED)
 
 add_executable(learnopengl main.cpp)
-target_link_libraries(learnopengl OpenGL::OpenGL SFML::Window)
+target_link_libraries(learnopengl OpenGL::OpenGL SFML::Window SFML::System)
