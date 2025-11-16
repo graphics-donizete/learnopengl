@@ -15,7 +15,8 @@ int main(int, char **)
     };
 
     sf::Window window(sf::VideoMode({800, 600}), "OpenGL", sf::Style::Default, sf::State::Windowed, settings);
-    glEnable(GL_TEXTURE_2D);
+
+    (void)window.setActive(true);
 
     while (window.isOpen())
     {
@@ -26,5 +27,10 @@ int main(int, char **)
                 window.close();
             }
         }
+
+        glClearColor(1, 0, 0, 1);
+        glClear(GL_COLOR_BUFFER_BIT);
+
+        window.display();
     }
 }
