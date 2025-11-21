@@ -8,6 +8,6 @@ add_executable(learnopengl main.cpp)
 target_link_libraries(
     learnopengl
     GLAD
-    OpenGL::OpenGL
+    OpenGL::GL
     SFML::Window
     SFML::System)
