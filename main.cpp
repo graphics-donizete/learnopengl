@@ -8,6 +8,8 @@
 #include <SFML/Window.hpp>
 #include <SFML/OpenGL.hpp>
 
+#include <learnopengl/shaders.hpp>
+
 int main(int, char **)
 {
     const sf::Clock clock;
