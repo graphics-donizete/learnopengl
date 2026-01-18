@@ -10,6 +10,33 @@
 
 #include <learnopengl/shaders.hpp>
 
+namespace learnopengl
+{
+    static int compile_shader(const char *const source)
+    {
+        constexpr int SIZE = 512;
+        unsigned int shader;
+
+        shader = glCreateShader(GL_VERTEX_SHADER);
+        glShaderSource(shader, 1, &source, nullptr);
+        glCompileShader(shader);
+
+        int success;
+        glGetShaderiv(shader, GL_COMPILE_STATUS, &success);
+        if (!success)
+        {
+            char infoLog[SIZE];
+            glGetShaderInfoLog(shader, SIZE, nullptr, infoLog);
+            std::cerr << "ERROR::SHADER::COMPILATION_FAILED\n"
+                      << infoLog << std::endl;
+
+            return -1;
+        }
+
+        return shader;
+    }
+}
+
 int main(int, char **)
 {
     const sf::Clock clock;
@@ -34,6 +61,8 @@ int main(int, char **)
     }
 
     gladLoadGL(sf::Context::getFunction);
+
+    learnopengl::compile_shader(learnopengl::vertex);
 
     while (window.isOpen())
     {
