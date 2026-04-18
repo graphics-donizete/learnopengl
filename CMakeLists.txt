@@ -13,8 +13,8 @@ find_package(OpenGL REQUIRED)
 add_executable(learnopengl main.cpp)
 target_link_libraries(
     learnopengl
-    GLAD
     OpenGL::GL
     SFML::Window
     SFML::System
+    LEARNOPENGL::GLAD
     LEARNOPENGL::shaders)
