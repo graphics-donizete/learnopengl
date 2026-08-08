@@ -16,14 +16,14 @@ namespace learnopengl
     {
         constexpr int SIZE = 512;
         unsigned int shader;
+        int ret;
 
         shader = glCreateShader(GL_VERTEX_SHADER);
         glShaderSource(shader, 1, &source, nullptr);
         glCompileShader(shader);
 
-        int success;
-        glGetShaderiv(shader, GL_COMPILE_STATUS, &success);
-        if (!success)
+        glGetShaderiv(shader, GL_COMPILE_STATUS, &ret);
+        if (!ret)
         {
             char infoLog[SIZE];
             glGetShaderInfoLog(shader, SIZE, nullptr, infoLog);
